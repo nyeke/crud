@@ -14,8 +14,6 @@ import javax.persistence.*;
 @AllArgsConstructor
 public class UsuarioEntity {
 
-    @Id
-    @GeneratedValue
     @Column(name="id")
     private Long idUser;
 

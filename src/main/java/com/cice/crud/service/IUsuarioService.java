@@ -1,15 +1,17 @@
 package com.cice.crud.service;
 
-import com.cice.crud.rest.UsuarioResource;
 import com.cice.crud.service.impl.UsuarioService;
 
-import java.util.Optional;
+import java.util.List;
 
 public interface IUsuarioService {
 
-    List<> findAllUsuarios();
+    void creaUsuario(String nombre, String user, String pass, String mail);
 
-    Optional<> findUsuarioById(Long id);
+    String mostrarUsuarios();
 
+    void actualizaUsuario(Long id, String campo, String dato);
+
+    void borraUsuario(Long id);
 
 }

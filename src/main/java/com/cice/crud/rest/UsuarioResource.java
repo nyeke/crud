@@ -1,6 +1,8 @@
 package com.cice.crud.rest;
 
+import com.cice.crud.data.entity.UsuarioEntity;
 import com.cice.crud.service.IUsuarioService;
+import com.cice.crud.service.impl.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -13,18 +15,18 @@ public class UsuarioResource {
     private IUsuarioService usuarioService;
 
     @RequestMapping(method = RequestMethod.POST, path = "/crea")
-    public void creaUsuario(String user, String pass){
+    public void creaUsuario(String nombre, String user, String pass, String mail){
 
     }
 
     @RequestMapping(method = RequestMethod.POST, path = "/lee")
-    public String leeUsuario (Long id){
+    public String leeUsuario (){
 
-        return null;
+        return usuarioService.mostrarUsuarios();
     }
 
     @RequestMapping(method = RequestMethod.POST, path = "/actualiza")
-    public void actualizaUsuario(Long id, String dato){
+    public void actualizaUsuario(Long id, String campo, String dato){
 
     }
 
