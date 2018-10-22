@@ -1,9 +1,16 @@
 package com.cice.crud.service.impl;
 
+import com.cice.crud.data.entity.UsuarioEntity;
 import com.cice.crud.data.repository.UsuarioRepository;
 import com.cice.crud.service.IUsuarioService;
+import com.cice.crud.service.converter.UsuarioConverter;
+import com.cice.crud.web.dto.UsuarioDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -12,25 +19,35 @@ public class UsuarioService implements IUsuarioService{
     @Autowired
     private UsuarioRepository usuarioRepository;
 
+    @Autowired
+    private UsuarioConverter usuarioConverter;
 
     @Override
-    public void creaUsuario(String nombre, String user, String pass, String mail) {
+    public List<UsuarioDTO> findAllUsuarios(){
+        List<UsuarioDTO> usuarioDTOList = null;
 
+        usuarioDTOList = usuarioRepository
+                .findAll()
+                .stream()
+                .map(entity -> usuarioConverter.UsuarioEntityToDTO(entity))
+                .collect(Collectors.toList());
+        return usuarioDTOList;
     }
 
     @Override
-    public String mostrarUsuarios() {
+    public Optional<UsuarioDTO> findUsuarioById(Long id) {
         return null;
     }
 
     @Override
-    public void actualizaUsuario(Long id, String campo, String dato) {
-
+    public Long creaUsuario(UsuarioDTO usuario) {
+        return null;
     }
 
     @Override
-    public void borraUsuario(Long id) {
-
+    public Long eliminarUsuario(UsuarioDTO usuario) {
+        return null;
     }
-}
+
+
 }

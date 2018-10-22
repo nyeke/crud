@@ -1,17 +1,19 @@
 package com.cice.crud.service;
 
 import com.cice.crud.service.impl.UsuarioService;
+import com.cice.crud.web.dto.UsuarioDTO;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface IUsuarioService {
 
-    void creaUsuario(String nombre, String user, String pass, String mail);
+    List<UsuarioDTO> findAllUsuarios();
 
-    String mostrarUsuarios();
+    Optional<UsuarioDTO> findUsuarioById(Long id);
 
-    void actualizaUsuario(Long id, String campo, String dato);
+    Long creaUsuario(UsuarioDTO usuario);
 
-    void borraUsuario(Long id);
+    Long eliminarUsuario(UsuarioDTO usuario);
 
 }

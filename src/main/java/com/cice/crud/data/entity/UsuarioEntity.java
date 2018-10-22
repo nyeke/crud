@@ -10,12 +10,13 @@ import javax.persistence.*;
 @Entity
 @Table(name="usuarios")
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
 public class UsuarioEntity {
 
+    @Id
+    @GeneratedValue
     @Column(name="id")
-    private Long idUser;
+    private Long id;
 
     @Column(name="nombre")
     private String nombre;
@@ -28,4 +29,7 @@ public class UsuarioEntity {
 
     @Column(name="mail")
     private String mail;
+
+    public UsuarioEntity(Long id, String nombre, String user, String mail) {
+    }
 }
