@@ -18,7 +18,7 @@ public class UsuarioResource {
 
     @RequestMapping(method = RequestMethod.GET)
     public List<UsuarioDTO> findAllUsers(){
-        List<UsuarioDTO>listaUsuarios = null;
+        List<UsuarioDTO> listaUsuarios = null;
         listaUsuarios = usuarioService.findAllUsuarios();
         return listaUsuarios;
     }
@@ -34,8 +34,9 @@ public class UsuarioResource {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public UsuarioDTO insertUser(@RequestBody UsuarioDTO usuarioDTO){
-        UsuarioDTO usuario = null;
+    public Long insertUser(@RequestBody UsuarioDTO usuarioDTO){
+        Long usuario = null;
+        usuarioService.creaUsuario(usuarioDTO);
         return usuario;
     }
 

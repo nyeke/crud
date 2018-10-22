@@ -36,12 +36,22 @@ public class UsuarioService implements IUsuarioService{
 
     @Override
     public Optional<UsuarioDTO> findUsuarioById(Long id) {
-        return null;
+        Optional<UsuarioDTO> usuarioDTOOptional = Optional.empty();
+        Optional<UsuarioEntity> entityOptional = usuarioRepository.findById(id);
+
+        if(entityOptional.isPresent()){
+            usuarioDTOOptional= Optional.of(usuarioConverter.UsuarioEntityToDTO(entityOptional.get()));
+        }
+
+        return usuarioDTOOptional;
     }
 
     @Override
     public Long creaUsuario(UsuarioDTO usuario) {
-        return null;
+        Long idUsuario = null;
+        UsuarioEntity save = usuarioRepository.save(usuarioConverter.UsuarioDTOToEntity(usuario));
+        idUsuario = save.getId();
+        return idUsuario;
     }
 
     @Override
