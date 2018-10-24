@@ -14,6 +14,8 @@ public interface IUsuarioService {
 
     Long creaUsuario(UsuarioDTO usuario);
 
-    Long eliminarUsuario(UsuarioDTO usuario);
+    UsuarioDTO actualizarUsuario(UsuarioDTO usuario);
+
+    Long eliminarUsuario(Long usuario);
 
 }

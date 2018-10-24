@@ -38,11 +38,9 @@ public class UsuarioService implements IUsuarioService{
     public Optional<UsuarioDTO> findUsuarioById(Long id) {
         Optional<UsuarioDTO> usuarioDTOOptional = Optional.empty();
         Optional<UsuarioEntity> entityOptional = usuarioRepository.findById(id);
-
         if(entityOptional.isPresent()){
             usuarioDTOOptional= Optional.of(usuarioConverter.UsuarioEntityToDTO(entityOptional.get()));
         }
-
         return usuarioDTOOptional;
     }
 
@@ -55,8 +53,23 @@ public class UsuarioService implements IUsuarioService{
     }
 
     @Override
-    public Long eliminarUsuario(UsuarioDTO usuario) {
-        return null;
+    public UsuarioDTO actualizarUsuario(UsuarioDTO usuario){
+        UsuarioDTO usuarioResponse = null;
+        Optional<UsuarioEntity> usuarioEntity = usuarioRepository.findById(usuario.getId());
+        if(usuarioEntity.isPresent()) {
+            usuarioConverter.matcherEntityDTO(usuario, usuarioEntity.get());
+            usuarioRepository.save(usuarioEntity.get());
+            usuarioResponse = usuarioConverter.UsuarioEntityToDTO(usuarioEntity.get());
+        }
+        return usuarioResponse;
+    }
+
+    @Override
+    public Long eliminarUsuario(Long usuario) {
+
+        usuarioRepository.deleteById(usuario);
+
+        return usuario;
     }
 
 

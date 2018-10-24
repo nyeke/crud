@@ -32,4 +32,19 @@ public class UsuarioConverter {
 
         return usuarioEntity;
     }
+
+    public void matcherEntityDTO(UsuarioDTO usuarioDTO, UsuarioEntity usuarioEntity){
+
+        if (usuarioDTO.getNombre() == null && !usuarioDTO.getNombre().equals(usuarioEntity.getNombre())){
+            usuarioEntity.setNombre(usuarioDTO.getNombre());
+        }
+
+        if (usuarioDTO.getMail() == null && !usuarioDTO.getMail().equals(usuarioEntity.getMail())){
+            usuarioEntity.setMail(usuarioDTO.getMail());
+        }
+
+        if (usuarioDTO.getUser() == null && !usuarioDTO.getUser().equals(usuarioEntity.getUser())){
+            usuarioEntity.setUser(usuarioDTO.getUser());
+        }
+    }
 }

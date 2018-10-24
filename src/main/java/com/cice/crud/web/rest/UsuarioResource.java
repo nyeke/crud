@@ -41,14 +41,21 @@ public class UsuarioResource {
     }
 
     @RequestMapping(method = RequestMethod.PUT, path = "/{id}")
-    public UsuarioDTO updateUser(@PathVariable(name = "id") Long id, @RequestBody UsuarioDTO usuarioDTO){
+    public UsuarioDTO updateUser(@PathVariable(name = "id") Long id, @RequestBody UsuarioDTO usuarioDTO) throws Exception {
         UsuarioDTO usuario = null;
+        if (id == usuarioDTO.getId()) {
+            usuario = usuarioService.actualizarUsuario(usuarioDTO);
+        } else {
+            throw new Exception();
+        }
         return usuario;
     }
 
     @RequestMapping(method = RequestMethod.DELETE, path = "/{id}")
-    public void deleteUser(@PathVariable(name = "id") Long id){
-
+    public Long deleteUser(@PathVariable(name = "id") Long id){
+        Long idEliminado = null;
+        idEliminado = usuarioService.eliminarUsuario(id);
+        return idEliminado;
     }
 
 }
